@@ -1,4 +1,4 @@
-import { addReducer } from '../redux';
+import { addReducer } from '@/src/redux';
 const nameSpace = 'home';
 const defaultState = {
     data:{
