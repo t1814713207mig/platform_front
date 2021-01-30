@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React, { lazy } from 'react';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/es/locale-provider/zh_CN';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import Layout from '/src/components/layout';
+import router from 'src/views/router';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider locale={zhCN}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            {router.map(({ key, loader, path, ...rest }) => <Route component={lazy(loader)} key={path} path={path} {...rest} />)}
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+      <div className="App">
+        测试
+      </div>
+    </ConfigProvider>
+    
   );
 }
 
