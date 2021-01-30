@@ -2,7 +2,7 @@ import { addReducer } from '../redux';
 const nameSpace = 'home';
 const defaultState = {
     data:{
-        username:'',
+        username:'admin',
         password:''
     }
 };
