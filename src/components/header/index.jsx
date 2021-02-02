@@ -11,12 +11,11 @@ const { Header } = Layout;
 export default () => {
     const { collapsed } = useSelector((state) => state.nav);
     const dispatch = useDispatch();
-    console.log('header');
     const collclick = useCallback(() => {
         dispatch({ type: 'nav/switch', collapsed: !collapsed })
-    }, []);
+    }, [collapsed]);
     return (
-        <Header className={classnames('platform_header')} style={{ padding: 0 }}>
+        <Header className={classnames('platform_header')} style={{ padding: '0 15px' }}>
             {collapsed ? <MenuUnfoldOutlined onClick={collclick} /> : <MenuFoldOutlined onClick={collclick} />}
         </Header>
     )
