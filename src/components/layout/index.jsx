@@ -4,19 +4,21 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import classnames from 'classnames';
 import Nav from '@/src/components/nav';
+import Header from '@/src/components/header';
 import './index.less';
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 export default ({ children, ...rest }) => {
     const { pathname } = useLocation();
     const { collapsed } = useSelector((state) => state.nav);
-    return <Layout className={classnames('site-layout')}>
+    return <Layout className={classnames('platform-layout')}>
         <Sider width="180" collapsible collapsed={collapsed} trigger={null}>
             <Nav />
         </Sider>
-        {/* <Header className="site-layout-background" style={{ padding: 0 }}>
-            </Header> */}
-        <Content className='site_layout_background'>
-            {children}
-        </Content>
+        <Layout className="site-layout">
+            <Header />
+            <Content className='platform_content site_layout_background'>
+                {children}
+            </Content>
+        </Layout>
     </Layout>
 }
